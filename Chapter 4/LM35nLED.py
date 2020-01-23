@@ -24,13 +24,27 @@ try:
             GPIO.output(RedLED, GPIO.LOW)
             time.sleep(5)
             GPIO.output(GreenLED, GPIO.LOW)
-        if (temp_c < 50):
+        if (temp_c <= 50):
             print("Temperature is normal: %d " % temp_c)
             GPIO.output(RedLED, GPIO.LOW)
             GPIO.output(GreenLED, GPIO.HIGH)
+            time.sleep(5)
+            GPIO.output(GreenLED, GPIO.LOW)
+            time.sleep(5)
         if (temp_f > 81):
-            print("The temp. is high at: %d " % temp_f)		    
-        time.sleep(2)
+            print("The temp. is high: %d " % temp_f)
+            GPIO.output(RedLED, GPIO.HIGH)
+            time.sleep(5)
+            GPIO.output(RedLED, GPIO.LOW)
+            time.sleep(5)
+            GPIO.output(GreenLED, GPIO.LOW)
+        if (temp_f <= 80):
+            print("The temp. is normal %d " % temp_f)
+            GPIO.output(RedLED, GPIO.LOW)
+            GPIO.output(GreenLED, GPIO.HIGH)
+            time.sleep(5)
+            GPIO.output(GreenLED, GPIO.LOW)
+            time.sleep(5)
 
 except KeyboardInterrupt:
     print "Keyboard Interrupt"
